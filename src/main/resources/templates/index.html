@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+        headerToolbar: {
+            left: 'prev,next',
+            center: 'title',
+            right: '',
+          },
+          weekends: false,
+          initialView: 'timeGridWeek',
+          slotMinTime: '07:30:00',
+          slotMaxTime: '21:30:00',
+          expandRows: true,
+          nowIndicator: true,
+          firstDay: 1,
+          allDaySlot: false,
+          events: [
+             {
+                title: 'NIE W4RTO',
+                daysOfWeek: '5',
+                startTime: '10:30',
+                endTime: '12:30',
+                description: 'TEST'
+            },
+            {
+                title: 'NIE W4RTO',
+                daysOfWeek: '4',
+                startTime: '8:45',
+                endTime: '10:30',
+                description: 'TEST'
+            },
+            {
+                title: 'NIE W4RTO',
+                daysOfWeek: '3',
+                startTime: '10:30',
+                endTime: '12:45',
+                color: 'VIOLET',
+                description: 'TEST'
+            },
+            {
+                title: 'NIE W4RTO',
+                daysOfWeek: '2',
+                startTime: '12:45',
+                endTime: '15:00',
+                color: 'GREEN',
+                description: 'TEST'
+            },
+            {
+                title: 'NIE W4RTO',
+                daysOfWeek: '1',
+                startTime: '15:00',
+                endTime: '17:15',
+                color: 'ORANGE',
+                description: 'TEST',
+            }
+          ],
+          eventDidMount: function(info) {
+            var target = info.el.getElementsByClassName('fc-event-title')[0];
+            if (target === undefined) {
+                return;
+            }
+            var div = document.createElement('div');
+            div.innerHTML = '' + (!!info.event.extendedProps.description?info.event.extendedProps.description:' ') + '';
+            target.parentNode.insertBefore(div.firstChild, target.nextSibling);
+            info.el.setAttribute('data-event-id',info.event.id);
+          }
+        });
+        calendar.render();
+        calendar.setOption('locale', 'pl');
+        calendar.setOption('aspectRatio', 2.2);
+      });
+    </script>
+    <style>
+
+	body {
+		margin: 10px 10px;
+		padding: 0;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		font-size: 14px;
+	}
+    </style>
+</head>
+<body>
+<div id='calendar'></div>
+</body>
+</html>
