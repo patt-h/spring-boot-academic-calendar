@@ -1,32 +1,46 @@
 package com.example.Calendar.Entity;
 
 import jakarta.persistence.*;
-
-import java.time.LocalDateTime;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Entity
-@Table(name = "event")
+@ConfigurationProperties(prefix = "spring.datasource")
+@Table(name = "Events")
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "title")
     private String title;
-    private String description;
-    private LocalDateTime start;
-    private LocalDateTime end;
 
-    public Event(Long id, String title, String description, LocalDateTime start, LocalDateTime end) {
-        super();
+    @Column(name = "daysOfWeek")
+    private String daysOfWeek;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "startTime")
+    private String startTime;
+
+    @Column(name = "endTime")
+    private String endTime;
+
+    @Column(name = "color")
+    private String color;
+
+    public Event(Long id, String title, String daysOfWeek, String description, String startTime, String endTime, String color) {
         this.id = id;
         this.title = title;
+        this.daysOfWeek = daysOfWeek;
         this.description = description;
-        this.start = start;
-        this.end = end;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.color = color;
     }
 
     public Event() {
-        super();
+
     }
 
     public Long getId() {
@@ -45,6 +59,14 @@ public class Event {
         this.title = title;
     }
 
+    public String getDaysOfWeek() {
+        return daysOfWeek;
+    }
+
+    public void setDaysOfWeek(String daysOfWeek) {
+        this.daysOfWeek = daysOfWeek;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -53,20 +75,28 @@ public class Event {
         this.description = description;
     }
 
-    public LocalDateTime getStart() {
-        return start;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setStart(LocalDateTime start) {
-        this.start = start;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public LocalDateTime getEnd() {
-        return end;
+    public String getEndTime() {
+        return endTime;
     }
 
-    public void setEnd(LocalDateTime end) {
-        this.end = end;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     @Override
@@ -74,9 +104,11 @@ public class Event {
         return "Event{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", daysOfWeek='" + daysOfWeek + '\'' +
                 ", description='" + description + '\'' +
-                ", start=" + start +
-                ", end=" + end +
+                ", startTime='" + startTime + '\'' +
+                ", endTime='" + endTime + '\'' +
+                ", color='" + color + '\'' +
                 '}';
     }
 }

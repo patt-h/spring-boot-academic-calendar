@@ -3,64 +3,80 @@
 <head>
     <meta charset='utf-8' />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
+    <script
+            src="https://code.jquery.com/jquery-3.7.1.js"
+            integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+
     <script>
 
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
+        customButtons: {
+            loginButton: {
+                text: 'Login',
+                click: function() {
+                    window.location.href = 'http://localhost:8080/login';
+                }
+            }
+        },
         headerToolbar: {
             left: 'prev,next',
             center: 'title',
-            right: '',
+            right: 'loginButton',
           },
           weekends: false,
           initialView: 'timeGridWeek',
           slotMinTime: '07:30:00',
           slotMaxTime: '21:30:00',
           expandRows: true,
+          editable: true,
           nowIndicator: true,
           firstDay: 1,
           allDaySlot: false,
-          events: [
-             {
-                title: 'NIE W4RTO',
-                daysOfWeek: '5',
-                startTime: '10:30',
-                endTime: '12:30',
-                description: 'TEST'
-            },
-            {
-                title: 'NIE W4RTO',
-                daysOfWeek: '4',
-                startTime: '8:45',
-                endTime: '10:30',
-                description: 'TEST'
-            },
-            {
-                title: 'NIE W4RTO',
-                daysOfWeek: '3',
-                startTime: '10:30',
-                endTime: '12:45',
-                color: 'VIOLET',
-                description: 'TEST'
-            },
-            {
-                title: 'NIE W4RTO',
-                daysOfWeek: '2',
-                startTime: '12:45',
-                endTime: '15:00',
-                color: 'GREEN',
-                description: 'TEST'
-            },
-            {
-                title: 'NIE W4RTO',
-                daysOfWeek: '1',
-                startTime: '15:00',
-                endTime: '17:15',
-                color: 'ORANGE',
-                description: 'TEST',
+          events: {
+            url: '/events',
+            type: 'GET',
+            error: function() {
+                alert('Wystąpił błąd podczas pobierania zajęć!');
             }
-          ],
+          },
+          eventDrop: function(info) {
+            var event = calendar.getEvent
+            var startHours = new Date;
+            var endHours = new Date;
+            startHours.setTime(info.event.start);
+            endHours.setTime(info.event.end);
+            var startH = startHours.getHours();
+            startH = ("0" + startH).slice(-2);
+            var startM = startHours.getMinutes();
+            startM = ("0" + startM).slice(-2);
+            var endH = endHours.getHours();
+            endH = ("0" + endH).slice(-2);
+            var endM = endHours.getMinutes();
+            endM = ("0" + endM).slice(-2);
+
+            var eventData;
+            eventData = {
+                id: info.event.id,
+                title: info.event.title,
+                daysOfWeek: startHours.getDay(),
+                description: info.event.extendedProps.description,
+                startTime: startH + ":" + startM,
+                endTime: endH + ":" + endM,
+                color: info.event.backgroundColor
+            }
+
+
+            $.ajax({
+                type: "POST",
+                url: "/events",
+                data: JSON.stringify(eventData),
+                dataType: "json",
+                contentType: "application/json"
+            });
+          },
           eventDidMount: function(info) {
             var target = info.el.getElementsByClassName('fc-event-title')[0];
             if (target === undefined) {
