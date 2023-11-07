@@ -25,12 +25,12 @@ public class EventController {
         return eventRepository.save(event);
     }
 
-    @RequestMapping(value="/event", method=RequestMethod.PATCH)
+    @RequestMapping(value="/events", method=RequestMethod.PATCH)
     public Event updateEvent(@RequestBody Event event) {
         return eventRepository.save(event);
     }
 
-    @RequestMapping(value="/event", method=RequestMethod.DELETE)
+    @RequestMapping(value="/events", method=RequestMethod.DELETE)
     public void removeEvent(@RequestBody Event event) {
         eventRepository.delete(event);
     }

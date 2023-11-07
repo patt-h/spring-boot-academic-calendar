@@ -2,11 +2,13 @@
 <html lang='en'>
 <head>
     <meta charset='utf-8' />
+    <link rel="stylesheet" href="css/main.css"/>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
     <script
             src="https://code.jquery.com/jquery-3.7.1.js"
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous">
+    </script>
 
     <script>
 
@@ -19,21 +21,28 @@
                 click: function() {
                     window.location.href = 'http://localhost:8080/login';
                 }
+            },
+            addEventButton: {
+              text: "Dodaj przedmiot",
+              click: function() {
+                modal.classList.add("open");
+              }
             }
         },
         headerToolbar: {
             left: 'prev,next',
             center: 'title',
-            right: 'loginButton',
+            right: 'loginButton addEventButton',
           },
           weekends: false,
           initialView: 'timeGridWeek',
           slotMinTime: '07:30:00',
           slotMaxTime: '21:30:00',
           expandRows: true,
-          editable: true,
+          editable: (window.location.href == "http://localhost:8080/admin") ? true:false,
           nowIndicator: true,
           firstDay: 1,
+          eventDurationEditable: false,
           allDaySlot: false,
           events: {
             url: '/events',
@@ -42,16 +51,20 @@
                 alert('Wystąpił błąd podczas pobierania zajęć!');
             }
           },
+
           eventDrop: function(info) {
             var event = calendar.getEvent
             var startHours = new Date;
             var endHours = new Date;
+
             startHours.setTime(info.event.start);
             endHours.setTime(info.event.end);
+
             var startH = startHours.getHours();
             startH = ("0" + startH).slice(-2);
             var startM = startHours.getMinutes();
             startM = ("0" + startM).slice(-2);
+
             var endH = endHours.getHours();
             endH = ("0" + endH).slice(-2);
             var endM = endHours.getMinutes();
@@ -68,7 +81,6 @@
                 color: info.event.backgroundColor
             }
 
-
             $.ajax({
                 type: "POST",
                 url: "/events",
@@ -77,6 +89,7 @@
                 contentType: "application/json"
             });
           },
+
           eventDidMount: function(info) {
             var target = info.el.getElementsByClassName('fc-event-title')[0];
             if (target === undefined) {
@@ -88,22 +101,56 @@
             info.el.setAttribute('data-event-id',info.event.id);
           }
         });
+
         calendar.render();
         calendar.setOption('locale', 'pl');
         calendar.setOption('aspectRatio', 2.2);
       });
     </script>
-    <style>
-
-	body {
-		margin: 10px 10px;
-		padding: 0;
-		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-		font-size: 14px;
-	}
-    </style>
 </head>
 <body>
-<div id='calendar'></div>
+    <div id='calendar'></div>
+
+    <div class="modal" id="modal">
+      <div class="modal-inner">
+        <h2>Dodaj przedmiot do planu</h2>
+        <p>
+          <div class="input">
+            <label>Nazwa przedmiotu</label>
+            <input type="text" id="title">
+
+            <label>Opis przedmiotu</label>
+            <input type="text" id="description">
+
+            <label>Rodzaj przedmiotu</label>
+            <select id="color">
+                <option value="GREEN">Wykład</option>
+                <option value="#4682B4">Laboratorium</option>
+                <option value="ORANGE">Ćwiczenia</option>
+                <option value="#F8E473">Projekt</option>
+                <option value="#7F00FF">Seminarium</option>
+            </select><br>
+
+            <label>Dzień tygodnia</label>
+            <input type="radio" name="dayOfWeek" value="1" checked> Pon.
+            <input type="radio" name="dayOfWeek" value="2"> Wt.
+            <input type="radio" name="dayOfWeek" value="3"> Śr.
+            <input type="radio" name="dayOfWeek" value="4"> Czw.
+            <input type="radio" name="dayOfWeek" value="5"> Pt.
+
+            <label>Godzina rozpoczęcia</label>
+            <input type="time" id="startTime" min="7:30" max="18:55"><br>
+
+            <label>Godzina zakończenia</label>
+            <input type="time" id="endTime" min="7:45" max="20:30">
+
+          </div>
+        </p>
+          <button id="submitEvent">Dodaj</button>
+          <button id="closeEvent">Zamknij</button>
+      </div>
+    </div>
+
+    <script src="js/addEvent.js"></script>
 </body>
 </html>
