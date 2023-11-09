@@ -17,6 +17,12 @@ public class Event {
     @Column(name = "daysOfWeek")
     private String daysOfWeek;
 
+    @Column(name = "weekType")
+    private String weekType;
+
+    @Column(name = "field")
+    private String field;
+
     @Column(name = "description")
     private String description;
 
@@ -29,10 +35,12 @@ public class Event {
     @Column(name = "color")
     private String color;
 
-    public Event(Long id, String title, String daysOfWeek, String description, String startTime, String endTime, String color) {
+    public Event(Long id, String title, String daysOfWeek, String weekType, String field, String description, String startTime, String endTime, String color) {
         this.id = id;
         this.title = title;
         this.daysOfWeek = daysOfWeek;
+        this.weekType = weekType;
+        this.field = field;
         this.description = description;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -65,6 +73,22 @@ public class Event {
 
     public void setDaysOfWeek(String daysOfWeek) {
         this.daysOfWeek = daysOfWeek;
+    }
+
+    public String getWeekType() {
+        return weekType;
+    }
+
+    public void setWeekType(String weekType) {
+        this.weekType = weekType;
+    }
+
+    public String getField() {
+        return field;
+    }
+
+    public void setField(String field) {
+        this.field = field;
     }
 
     public String getDescription() {
@@ -105,6 +129,8 @@ public class Event {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", daysOfWeek='" + daysOfWeek + '\'' +
+                ", weekType='" + weekType + '\'' +
+                ", field='" + field + '\'' +
                 ", description='" + description + '\'' +
                 ", startTime='" + startTime + '\'' +
                 ", endTime='" + endTime + '\'' +

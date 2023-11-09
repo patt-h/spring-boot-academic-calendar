@@ -5,6 +5,31 @@ body {
 	font-size: 14px;
 }
 
+.sorting {
+	position: absolute;
+	top: 15px;
+	left: 40px;
+	font-weight: bold;
+}
+
+.weekType {
+	position: absolute;
+	top: 15px;
+	left: 350px;
+}
+
+.labelWeekType {
+	font-weight: bold;
+}
+
+.fc-event-title {
+	font-weight: bold;
+}
+
+.fc-event {
+	overflow-wrap: break-word;
+}
+
 button {
 	background-image: linear-gradient(to right, #646464, #878787);
 	border-radius: 20px;
@@ -65,3 +90,4 @@ label {
 	line-height: 24px;
 	margin: 10px 0;
 }
+
