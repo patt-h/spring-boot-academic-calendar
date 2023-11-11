@@ -14,14 +14,13 @@ public class CalendarController {
         return new ModelAndView("index");
     }
 
-    @RequestMapping("/login")
-    @ResponseBody
-    public String loginPanel() {
-        return "Hello World";
+    @RequestMapping(value = "/user")
+    public String userPanel() {
+        return "user";
     }
 
     @RequestMapping("/admin")
     public String adminPanel() {
-        return "index";
+        return "admin";
     }
 }

@@ -21,7 +21,9 @@ submitButton.addEventListener("click", () => {
         dataType: "json",
         contentType: "application/json"
     });
-    window.location.reload();
+    setTimeout(function() {
+        window.location.reload()
+    }, 100)
 });
 
 

@@ -2,13 +2,14 @@
 <html lang='en'>
 <head>
     <meta charset='utf-8' />
-    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="/css/main.css"/>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
     <script
             src="https://code.jquery.com/jquery-3.7.1.js"
             integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
             crossorigin="anonymous">
     </script>
+    
 
     <script>
 
@@ -17,29 +18,24 @@
         var calendar = new FullCalendar.Calendar(calendarEl, {
         customButtons: {
             loginButton: {
-                text: 'Login',
+                text: 'Zaloguj',
                 click: function() {
                     window.location.href = 'http://localhost:8080/login';
                 }
             },
-            addEventButton: {
-              text: "Dodaj przedmiot",
-              click: function() {
-                modal.classList.add("open");
-              }
-            }
         },
         headerToolbar: {
-            left: 'prev,next',
-            center: 'title',
-            right: 'loginButton addEventButton',
+            left: '',
+            center: 'prev,next',
+            right: 'loginButton',
           },
           weekends: false,
+          weekNumbers: true,
           initialView: 'timeGridWeek',
           slotMinTime: '07:30:00',
           slotMaxTime: '21:30:00',
           expandRows: true,
-          editable: (window.location.href == "http://localhost:8080/admin") ? true:false,
+          editable: false,
           nowIndicator: true,
           firstDay: 1,
           eventDurationEditable: false,
@@ -48,46 +44,8 @@
             url: '/events/' + localStorage.getItem("sort") + '/' + localStorage.getItem("week"),
             type: 'GET'
           },
+          
 
-          eventDrop: function(info) {
-            var event = calendar.getEvent
-            var startHours = new Date;
-            var endHours = new Date;
-
-            startHours.setTime(info.event.start);
-            endHours.setTime(info.event.end);
-
-            var startH = startHours.getHours();
-            startH = ("0" + startH).slice(-2);
-            var startM = startHours.getMinutes();
-            startM = ("0" + startM).slice(-2);
-
-            var endH = endHours.getHours();
-            endH = ("0" + endH).slice(-2);
-            var endM = endHours.getMinutes();
-            endM = ("0" + endM).slice(-2);
-
-            var eventData;
-            eventData = {
-                id: info.event.id,
-                title: info.event.title,
-                daysOfWeek: startHours.getDay(),
-                weekType: info.event.extendedProps.weekType,
-                field: info.event.extendedProps.field,
-                description: info.event.extendedProps.description,
-                startTime: startH + ":" + startM,
-                endTime: endH + ":" + endM,
-                color: info.event.backgroundColor
-            }
-
-            $.ajax({
-                type: "POST",
-                url: "/events",
-                data: JSON.stringify(eventData),
-                dataType: "json",
-                contentType: "application/json"
-            });
-          },
           eventDidMount: function(info) {
             var target = info.el.getElementsByClassName('fc-event-title')[0];
             if (target === undefined) {
@@ -140,69 +98,11 @@
   </div>
 
   <div class="weekType" id="sortingWeek">
+    <input type="hidden" id="weekNumber">
     <label class="labelWeekType">Wyświetlanie:</label>
     <input type="radio" name="chosenWeek" id="EW" value="EW"> Semestralny
     <input type="radio" name="chosenWeek" id="TP" value="TP"> Tygodniowy
   </div>
-
-    <div class="modal" id="modal">
-      <div class="modal-inner">
-        <h2>Dodaj przedmiot do planu</h2>
-        <p>
-          <div class="input">
-            <label>Nazwa przedmiotu</label>
-            <input type="text" id="title">
-
-            <label>Opis przedmiotu</label>
-            <input type="text" id="description">
-
-            <label>Rodzaj przedmiotu</label>
-            <select id="color">
-              <option value="GREEN">Wykład</option>
-              <option value="#4682B4">Laboratorium</option>
-              <option value="ORANGE">Ćwiczenia</option>
-              <option value="#F8E473">Projekt</option>
-              <option value="#7F00FF">Seminarium</option>
-            </select><br>
-
-            <label>Kierunek</label>
-            <select id="field">
-              <option value="TIN">Teleinformatyka</option>
-              <option value="TEL">Telekomunikacja</option>
-              <option value="CBE">Cyberbezpieczeństwo</option>
-              <option value="ITE">Informatyka techniczna</option>
-              <option value="INA">Informatyka algorytmiczna</option>
-              <option value="IST">Informatyka stosowana</option>
-              <option value="INS">Inżynieria systemów</option>
-            </select>
-
-
-            <label>Dzień tygodnia</label>
-            <input type="radio" name="dayOfWeek" value="1" checked> Pon.
-            <input type="radio" name="dayOfWeek" value="2"> Wt.
-            <input type="radio" name="dayOfWeek" value="3"> Śr.
-            <input type="radio" name="dayOfWeek" value="4"> Czw.
-            <input type="radio" name="dayOfWeek" value="5"> Pt.
-
-            <label>Rodzaj tygodnia</label>
-            <input type="radio" name="weekType" value="EW" checked> Cotygodniowy
-            <input type="radio" name="weekType" value="TP"> TP
-            <input type="radio" name="weekType" value="TN"> TN
-
-            <label>Godzina rozpoczęcia</label>
-            <input type="time" id="startTime" min="7:30" max="18:55"><br>
-
-            <label>Godzina zakończenia</label>
-            <input type="time" id="endTime" min="7:45" max="20:30">
-
-          </div>
-        </p>
-          <button id="submitEvent">Dodaj</button>
-          <button id="closeEvent">Zamknij</button>
-      </div>
-    </div>
-
-    <script src="js/addEvent.js"></script>
-    <script src="js/sortEvent.js"></script>
+    <script src="/js/sortEvent.js"></script>
 </body>
 </html>

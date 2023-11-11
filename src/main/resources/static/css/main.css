@@ -8,14 +8,14 @@ body {
 .sorting {
 	position: absolute;
 	top: 15px;
-	left: 40px;
+	left: 0px;
 	font-weight: bold;
 }
 
 .weekType {
 	position: absolute;
 	top: 15px;
-	left: 350px;
+	left: 315px;
 }
 
 .labelWeekType {
