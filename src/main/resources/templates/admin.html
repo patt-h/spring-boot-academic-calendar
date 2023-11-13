@@ -2,6 +2,7 @@
 <html lang='en'>
 <head>
     <meta charset='utf-8' />
+    <title>Kalendarz akademicki - ADMIN</title>
     <link rel="stylesheet" href="/css/main.css"/>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
     <script
@@ -11,6 +12,11 @@
     </script>
 
     <script>
+      if (!window.location.href.match('\\?sort=')) {
+        setTimeout(function() {
+          window.location.href = 'http://localhost:8080/admin?sort=' + localStorage.getItem("sort") + '&sort=' + document.querySelector('input[name="chosenWeek"]:checked').value;
+        }, 100)
+      }
 
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -19,8 +25,32 @@
             logoutButton: {
                 text: 'Wyloguj',
                 click: function() {
-                    console.log("wylogowywanie");
+                  window.location.href = 'http://localhost:8080/logout';
                 }
+            },
+            next: {
+              click: function() {
+                changeWeek();
+                removeEvents = calendar.getEventSources();
+                removeEvents.forEach(event => {
+                  event.remove(); 
+                });
+
+                calendar.addEventSource('/events/' + localStorage.getItem("sort") + '/' + localStorage.getItem("week"));
+                calendar.next();
+              }
+            },
+            prev: {
+              click: function() {
+                changeWeek();
+                removeEvents = calendar.getEventSources();
+                removeEvents.forEach(event => {
+                  event.remove(); 
+                });
+
+                calendar.addEventSource('/events/' + localStorage.getItem("sort") + '/' + localStorage.getItem("week"));
+                calendar.prev();
+              }
             },
             addEventButton: {
               text: "Dodaj przedmiot",
@@ -35,6 +65,7 @@
             right: 'logoutButton addEventButton',
           },
           weekends: false,
+          weekNumbers: true,
           initialView: 'timeGridWeek',
           slotMinTime: '07:30:00',
           slotMaxTime: '21:30:00',
@@ -170,7 +201,7 @@
   <div class="weekType" id="sortingWeek">
     <label class="labelWeekType">Wyświetlanie:</label>
     <input type="radio" name="chosenWeek" id="EW" value="EW"> Semestralny
-    <input type="radio" name="chosenWeek" id="TP" value="TP"> Tygodniowy
+    <input type="radio" name="chosenWeek" id="weekly" value="WEEKLY"> Tygodniowy
   </div>
 
     <div class="modal" id="modal">

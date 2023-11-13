@@ -18,6 +18,12 @@ body {
 	left: 315px;
 }
 
+.consultations {
+	position: absolute;
+	top: 15px;
+	left: 645px;
+}
+
 .labelWeekType {
 	font-weight: bold;
 }

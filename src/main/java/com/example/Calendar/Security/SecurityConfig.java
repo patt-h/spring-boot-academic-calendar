@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 import javax.sql.DataSource;
 
@@ -28,13 +30,18 @@ public class SecurityConfig {
                                 .requestMatchers("/user").hasAnyRole("ADMIN", "EMPLOYEE")
                                 .requestMatchers(HttpMethod.GET).permitAll()
                                 .requestMatchers(HttpMethod.POST).hasAnyRole("ADMIN", "EMPLOYEE")
-                                .requestMatchers(HttpMethod.DELETE).hasRole("ADMIN")
+                                .requestMatchers(HttpMethod.DELETE).hasAnyRole("ADMIN", "EMPLOYEE")
                 )
                 .formLogin(form ->
                 form
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/admin")
+                        .successHandler(new CustomAuthHandler())
                         .permitAll()
+                )
+                .logout(logout ->
+                        logout
+                                .permitAll()
+                                .logoutSuccessUrl("/")
                 );
         http.httpBasic(Customizer.withDefaults());
         http.csrf(csrv -> csrv.disable());

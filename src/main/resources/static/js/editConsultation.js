@@ -1,25 +1,25 @@
-const editButton = document.getElementById("editEvent");
-const deleteButton = document.getElementById("deleteEvent");
-const closeEditButton = document.getElementById("closeEditEvent")
+const editButton = document.getElementById("editConsultation");
+const deleteButton = document.getElementById("deleteConsultation");
+const closeEditButton = document.getElementById("closeEditConsultation")
 const modal2 = document.getElementById("modal2");
 
 editButton.addEventListener("click", () => {
-    var editEventData = {
+    var editConsultationData = {
         id: document.getElementById("editEventId").value,
         title: document.getElementById("editEventTitle").value,
         daysOfWeek: document.querySelector('input[name="editEventDayOfWeek"]:checked').value,
-        weekType: document.querySelector('input[name="editEventWeekType"]:checked').value,
+        weekType: "EW",
         field: document.getElementById("editEventField").value,
         description: document.getElementById("editEventDescription").value,
         startTime: document.getElementById("editEventStartTime").value,
         endTime: document.getElementById("editEventEndTime").value,
-        color: document.getElementById("editEventColor").value
+        color: "#D3D3D3"
     }
 
     $.ajax({
         type: "POST",
         url: "/events",
-        data: JSON.stringify(editEventData),
+        data: JSON.stringify(editConsultationData),
         dataType: "json",
         contentType: "application/json"
     });

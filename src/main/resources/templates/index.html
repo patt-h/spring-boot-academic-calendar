@@ -2,6 +2,7 @@
 <html lang='en'>
 <head>
     <meta charset='utf-8' />
+    <title>Kalendarz akademicki</title>
     <link rel="stylesheet" href="/css/main.css"/>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
     <script
@@ -12,6 +13,11 @@
     
 
     <script>
+      if (!window.location.href.match('\\?sort=')) {
+        setTimeout(function() {
+          window.location.href = 'http://localhost:8080?sort=' + localStorage.getItem("sort") + '&sort=' + document.querySelector('input[name="chosenWeek"]:checked').value;
+        }, 100)
+      }
 
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -23,6 +29,30 @@
                     window.location.href = 'http://localhost:8080/login';
                 }
             },
+            next: {
+              click: function() {
+                changeWeek();
+                removeEvents = calendar.getEventSources();
+                removeEvents.forEach(event => {
+                  event.remove(); 
+                });
+
+                calendar.addEventSource('/events/' + localStorage.getItem("sort") + '/' + localStorage.getItem("week"));
+                calendar.next();
+              }
+            },
+            prev: {
+              click: function() {
+                changeWeek();
+                removeEvents = calendar.getEventSources();
+                removeEvents.forEach(event => {
+                  event.remove(); 
+                });
+
+                calendar.addEventSource('/events/' + localStorage.getItem("sort") + '/' + localStorage.getItem("week"));
+                calendar.prev();
+              }
+            }
         },
         headerToolbar: {
             left: '',
@@ -45,7 +75,6 @@
             type: 'GET'
           },
           
-
           eventDidMount: function(info) {
             var target = info.el.getElementsByClassName('fc-event-title')[0];
             if (target === undefined) {
@@ -83,6 +112,11 @@
 <body>
     <div id='calendar'></div>
 
+    <div class="consultations" id="sortingConsultations">
+      <label>Konsultacje</label>
+      <input type="checkbox" checked>
+    </div>
+
     <div class="sorting" id="sortingFields">
       <label>Sortowanie</label>
       <select id="sorting">
@@ -98,10 +132,9 @@
   </div>
 
   <div class="weekType" id="sortingWeek">
-    <input type="hidden" id="weekNumber">
     <label class="labelWeekType">Wyświetlanie:</label>
     <input type="radio" name="chosenWeek" id="EW" value="EW"> Semestralny
-    <input type="radio" name="chosenWeek" id="TP" value="TP"> Tygodniowy
+    <input type="radio" name="chosenWeek" id="weekly" value="WEEKLY"> Tygodniowy
   </div>
     <script src="/js/sortEvent.js"></script>
 </body>

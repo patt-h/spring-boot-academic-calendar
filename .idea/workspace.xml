@@ -4,20 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc2b35c6-77b2-4d8d-bcb9-d1999dbf4a9e" name="Changes" comment="Added sorting by field and by type of week">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Security/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="dc2b35c6-77b2-4d8d-bcb9-d1999dbf4a9e" name="Changes" comment="Added Spring Security to handle POST and DELETE requests only for logged-in users">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Controller/WeekController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Security/CustomAuthHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Controller/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Controller/CalendarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Controller/EventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Security/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/addEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/addEvent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/editEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/editEvent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/sortEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/sortEvent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699488741480</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added Spring Security to handle POST and DELETE requests only for logged-in users">
+      <created>1699663182040</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699663182040</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -149,6 +154,7 @@
     <MESSAGE value="Added GET and POST methods and connection to database" />
     <MESSAGE value="Added possibility to add events directly from browser, moved JavaScript and CSS files to dedicated directories" />
     <MESSAGE value="Added sorting by field and by type of week" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added sorting by field and by type of week" />
+    <MESSAGE value="Added Spring Security to handle POST and DELETE requests only for logged-in users" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Spring Security to handle POST and DELETE requests only for logged-in users" />
   </component>
 </project>
