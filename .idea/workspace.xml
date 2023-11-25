@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc2b35c6-77b2-4d8d-bcb9-d1999dbf4a9e" name="Changes" comment="Added Spring Security to handle POST and DELETE requests only for logged-in users">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Controller/WeekController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Security/CustomAuthHandler.java" afterDir="false" />
+    <list default="true" id="dc2b35c6-77b2-4d8d-bcb9-d1999dbf4a9e" name="Changes" comment="Added consultations for employees and improved sorting by week types with external API">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Entity/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Entity/Event.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/addConsultation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/addConsultation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/addEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/addEvent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/editConsultation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/editConsultation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/editEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/editEvent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/sortEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/sortEvent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin.html" afterDir="false" />
@@ -127,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699663182040</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added consultations for employees and improved sorting by week types with external API">
+      <created>1699839221023</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1699839221023</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -155,6 +163,7 @@
     <MESSAGE value="Added possibility to add events directly from browser, moved JavaScript and CSS files to dedicated directories" />
     <MESSAGE value="Added sorting by field and by type of week" />
     <MESSAGE value="Added Spring Security to handle POST and DELETE requests only for logged-in users" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Spring Security to handle POST and DELETE requests only for logged-in users" />
+    <MESSAGE value="Added consultations for employees and improved sorting by week types with external API" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added consultations for employees and improved sorting by week types with external API" />
   </component>
 </project>

@@ -136,7 +136,9 @@
                 description: info.event.extendedProps.description,
                 startTime: startH + ":" + startM,
                 endTime: endH + ":" + endM,
-                color: info.event.backgroundColor
+                color: info.event.backgroundColor,
+                enabled: info.event.extendedProps.enabled,
+                createdBy: info.event.extendedProps.createdBy
             }
 
             $.ajax({
@@ -148,6 +150,12 @@
             });
           },
           eventDidMount: function(info) {
+            if (localStorage.getItem("consultationCheck") != "checked") {
+              if (info.event.backgroundColor === "#D3D3D3") {
+                calendar.getEventById(info.event.id).remove();
+              }
+            }
+
             var target = info.el.getElementsByClassName('fc-event-title')[0];
             if (target === undefined) {
                 return;
@@ -183,6 +191,11 @@
 </head>
 <body>
     <div id='calendar'></div>
+
+    <div class="consultations" id="sortingConsultations">
+      <label>Konsultacje</label>
+      <input type="checkbox" name="consultations">
+    </div>
 
     <div class="sorting" id="sortingFields">
       <label>Sortowanie</label>
@@ -320,7 +333,7 @@
           <button id="closeEditEvent">Zamknij</button>
       </div>
     </div>
-
+    <script src="/js/getUser.js"></script>
     <script src="/js/addEvent.js"></script>
     <script src="/js/editEvent.js"></script>
     <script src="/js/sortEvent.js"></script>

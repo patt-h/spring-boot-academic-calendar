@@ -35,7 +35,13 @@ public class Event {
     @Column(name = "color")
     private String color;
 
-    public Event(Long id, String title, String daysOfWeek, String weekType, String field, String description, String startTime, String endTime, String color) {
+    @Column(name = "enabled")
+    private int enabled;
+
+    @Column(name = "createdBy")
+    private String createdBy;
+
+    public Event(Long id, String title, String daysOfWeek, String weekType, String field, String description, String startTime, String endTime, String color, int enabled, String createdBy) {
         this.id = id;
         this.title = title;
         this.daysOfWeek = daysOfWeek;
@@ -45,6 +51,8 @@ public class Event {
         this.startTime = startTime;
         this.endTime = endTime;
         this.color = color;
+        this.enabled = enabled;
+        this.createdBy = createdBy;
     }
 
     public Event() {
@@ -123,6 +131,22 @@ public class Event {
         this.color = color;
     }
 
+    public int getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
     @Override
     public String toString() {
         return "Event{" +
@@ -135,6 +159,8 @@ public class Event {
                 ", startTime='" + startTime + '\'' +
                 ", endTime='" + endTime + '\'' +
                 ", color='" + color + '\'' +
+                ", enabled=" + enabled +
+                ", createdBy='" + createdBy + '\'' +
                 '}';
     }
 }

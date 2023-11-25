@@ -76,6 +76,12 @@
           },
           
           eventDidMount: function(info) {
+            if (localStorage.getItem("consultationCheck") != "checked") {
+              if (info.event.backgroundColor === "#D3D3D3") {
+                calendar.getEventById(info.event.id).remove();
+              }
+            }
+
             var target = info.el.getElementsByClassName('fc-event-title')[0];
             if (target === undefined) {
                 return;
@@ -100,7 +106,6 @@
             info.el.setAttribute('data-event-id',info.event.id);
           }
         });
-
         calendar.render();
         calendar.setOption('locale', 'pl');
         calendar.setOption('aspectRatio', 2.2);
@@ -114,7 +119,7 @@
 
     <div class="consultations" id="sortingConsultations">
       <label>Konsultacje</label>
-      <input type="checkbox" checked>
+      <input type="checkbox" name="consultations">
     </div>
 
     <div class="sorting" id="sortingFields">

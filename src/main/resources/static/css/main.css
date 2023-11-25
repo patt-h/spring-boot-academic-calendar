@@ -32,8 +32,15 @@ body {
 	font-weight: bold;
 }
 
+.fc-event[display = "none"] {
+	position: absolute !important;
+	top: -9999px !important;
+	left: -9999px !important;
+}
+
 .fc-event {
 	overflow-wrap: break-word;
+	text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
 }
 
 button {

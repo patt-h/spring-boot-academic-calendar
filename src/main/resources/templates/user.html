@@ -109,6 +109,12 @@
             }
           },
           eventDidMount: function(info) {
+            if (localStorage.getItem("consultationCheck") != "checked") {
+              if (info.event.backgroundColor === "#D3D3D3") {
+                calendar.getEventById(info.event.id).remove();
+              }
+            }
+
             var target = info.el.getElementsByClassName('fc-event-title')[0];
             if (target === undefined) {
                 return;
@@ -144,6 +150,11 @@
 </head>
 <body>
     <div id='calendar'></div>
+
+    <div class="consultations" id="sortingConsultations">
+      <label>Konsultacje</label>
+      <input type="checkbox" name="consultations">
+    </div>
 
     <div class="sorting" id="sortingFields">
       <label>Sortowanie</label>
@@ -252,7 +263,8 @@
           <button id="closeEditConsultation">Zamknij</button>
       </div>
     </div>
-
+    
+    <script src="/js/getUser.js"></script>
     <script src="/js/addConsultation.js"></script>
     <script src="/js/editConsultation.js"></script>
     <script src="/js/sortEvent.js"></script>

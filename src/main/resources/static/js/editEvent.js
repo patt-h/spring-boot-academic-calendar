@@ -13,7 +13,9 @@ editButton.addEventListener("click", () => {
         description: document.getElementById("editEventDescription").value,
         startTime: document.getElementById("editEventStartTime").value,
         endTime: document.getElementById("editEventEndTime").value,
-        color: document.getElementById("editEventColor").value
+        color: document.getElementById("editEventColor").value,
+        enabled: 1,
+        createdBy: user
     }
 
     $.ajax({

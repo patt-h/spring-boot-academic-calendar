@@ -11,7 +11,9 @@ submitConsultation.addEventListener("click", () => {
         description: document.getElementById("description").value,
         startTime: document.getElementById("startTime").value,
         endTime: document.getElementById("endTime").value,
-        color: "#D3D3D3"
+        color: "#D3D3D3",
+        enabled: 1,
+        createdBy: user
     }
 
     $.ajax({

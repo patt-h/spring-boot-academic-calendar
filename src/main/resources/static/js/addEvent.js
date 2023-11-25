@@ -11,7 +11,9 @@ submitButton.addEventListener("click", () => {
         description: document.getElementById("description").value,
         startTime: document.getElementById("startTime").value,
         endTime: document.getElementById("endTime").value,
-        color: document.getElementById("color").value
+        color: document.getElementById("color").value,
+        enabled: 1,
+        createdBy: user
     }
 
     $.ajax({

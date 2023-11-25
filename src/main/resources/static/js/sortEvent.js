@@ -1,6 +1,6 @@
 const sortList = document.getElementById("sortingFields");
 const weekCheck = document.getElementById("sortingWeek");
-
+const consultationCheck = document.getElementById("sortingConsultations");
 
 if (localStorage.getItem("sort") == null) {
     localStorage.setItem("sort", "W4");
@@ -34,6 +34,10 @@ if (localStorage.getItem("week") == null) {
     });
 }
 
+if (localStorage.getItem("consultationCheck") == null) {
+    localStorage.setItem("consultationCheck", "checked");
+}
+
 function changeWeek() {
     if (localStorage.getItem("week") == "TN") {
         localStorage.setItem("week", "TP");
@@ -63,8 +67,6 @@ else {
 }
 document.getElementById("sorting").value = localStorage.getItem("sort");
 
-
-
 sortList.addEventListener("change", () => {
     localStorage.setItem("sort", document.getElementById("sorting").value);
 
@@ -81,3 +83,27 @@ weekCheck.addEventListener("change", () => {
 
     urlByRole();
 })
+
+consultationCheck.addEventListener("change", () => {
+    if (document.querySelector('input[name="consultations"]:checked')) {
+        localStorage.setItem("consultationCheck", "checked");
+
+        setTimeout(function() {
+            window.location.reload()
+        }, 100)
+    }
+    else {
+        localStorage.setItem("consultationCheck", "unchecked");
+
+        setTimeout(function() {
+            window.location.reload()
+        }, 100)
+    }
+})
+
+if (localStorage.getItem("consultationCheck") == "checked") {
+    document.querySelector('input[name="consultations"]').checked = true;
+}
+else {
+    document.querySelector('input[name="consultations"]').checked = false;
+}
