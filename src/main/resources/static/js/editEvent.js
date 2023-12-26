@@ -7,6 +7,7 @@ editButton.addEventListener("click", () => {
     var editEventData = {
         id: document.getElementById("editEventId").value,
         title: document.getElementById("editEventTitle").value,
+        tutor: document.getElementById("editEventTutor").value,
         daysOfWeek: document.querySelector('input[name="editEventDayOfWeek"]:checked').value,
         weekType: document.querySelector('input[name="editEventWeekType"]:checked').value,
         field: document.getElementById("editEventField").value,

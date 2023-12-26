@@ -5,6 +5,7 @@ const modal = document.getElementById("modal");
 submitButton.addEventListener("click", () => {
     var addEventData = {
         title: document.getElementById("title").value,
+        tutor: document.getElementById("tutor").value,
         daysOfWeek: document.querySelector('input[name="dayOfWeek"]:checked').value,
         weekType: document.querySelector('input[name="weekType"]:checked').value,
         field: document.getElementById("field").value,

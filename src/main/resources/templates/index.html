@@ -56,8 +56,8 @@
         },
         headerToolbar: {
             left: '',
-            center: 'prev,next',
-            right: 'loginButton',
+            center: '',
+            right: 'prev,next loginButton',
           },
           weekends: false,
           weekNumbers: true,
@@ -89,13 +89,17 @@
             var div1 = document.createElement('div1');
             var div2 = document.createElement('div2');
             var div3 = document.createElement('div3');
+            var div4 = document.createElement('div4');
             var divBreak1 = document.createElement('divBreak1');
             var divBreak2 = document.createElement('divBreak2');
+            var divBreak3 = document.createElement('divBreak3');
             div1.innerHTML = '' + (!!info.event.extendedProps.field?info.event.extendedProps.field:' ') + '';
             div2.innerHTML = '' + (!!info.event.extendedProps.weekType?info.event.extendedProps.weekType:' ') + '';
             div3.innerHTML = '' + (!!info.event.extendedProps.description?info.event.extendedProps.description:' ') + '';
+            div4.innerHTML = '' + (!!info.event.extendedProps.tutor?info.event.extendedProps.tutor:' ') + '';
             divBreak1.innerHTML = "<br>";
             divBreak2.innerHTML = "<br>";
+            divBreak3.innerHTML = "<br>";
             if ((localStorage.getItem("sort") == "W4")) {
               target.parentNode.insertBefore(div1.firstChild, target.nextSibling);
               target.parentNode.insertBefore(divBreak1.firstChild, target.nextSibling);
@@ -103,6 +107,8 @@
             target.parentNode.insertBefore(div2.firstChild, target.nextSibling);
             target.parentNode.insertBefore(divBreak2.firstChild, target.nextSibling);
             target.parentNode.insertBefore(div3.firstChild, target.nextSibling);
+            target.parentNode.insertBefore(divBreak3.firstChild, target.nextSibling);
+            target.parentNode.insertBefore(div4.firstChild, target.nextSibling);
             info.el.setAttribute('data-event-id',info.event.id);
           }
         });

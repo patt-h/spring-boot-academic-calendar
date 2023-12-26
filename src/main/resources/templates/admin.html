@@ -61,8 +61,8 @@
         },
         headerToolbar: {
             left: '',
-            center: 'prev,next',
-            right: 'logoutButton addEventButton',
+            center: '',
+            right: 'prev,next logoutButton addEventButton',
           },
           weekends: false,
           weekNumbers: true,
@@ -100,6 +100,7 @@
             
             document.getElementById("editEventId").value = info.event.id;
             document.getElementById("editEventTitle").value = info.event.title;
+            document.getElementById("editEventTutor").value = info.event.extendedProps.tutor;
             document.getElementById("editEventDescription").value = info.event.extendedProps.description;
             document.getElementById("editEventColor").value = info.event.backgroundColor;
             document.getElementById("editEventField").value = info.event.extendedProps.field;
@@ -130,6 +131,7 @@
             eventData = {
                 id: info.event.id,
                 title: info.event.title,
+                tutor: info.event.extendedProps.tutor,
                 daysOfWeek: startHours.getDay(),
                 weekType: info.event.extendedProps.weekType,
                 field: info.event.extendedProps.field,
@@ -163,13 +165,17 @@
             var div1 = document.createElement('div1');
             var div2 = document.createElement('div2');
             var div3 = document.createElement('div3');
+            var div4 = document.createElement('div4');
             var divBreak1 = document.createElement('divBreak1');
             var divBreak2 = document.createElement('divBreak2');
+            var divBreak3 = document.createElement('divBreak3');
             div1.innerHTML = '' + (!!info.event.extendedProps.field?info.event.extendedProps.field:' ') + '';
             div2.innerHTML = '' + (!!info.event.extendedProps.weekType?info.event.extendedProps.weekType:' ') + '';
             div3.innerHTML = '' + (!!info.event.extendedProps.description?info.event.extendedProps.description:' ') + '';
+            div4.innerHTML = '' + (!!info.event.extendedProps.tutor?info.event.extendedProps.tutor:' ') + '';
             divBreak1.innerHTML = "<br>";
             divBreak2.innerHTML = "<br>";
+            divBreak3.innerHTML = "<br>";
             if ((localStorage.getItem("sort") == "W4")) {
               target.parentNode.insertBefore(div1.firstChild, target.nextSibling);
               target.parentNode.insertBefore(divBreak1.firstChild, target.nextSibling);
@@ -177,6 +183,8 @@
             target.parentNode.insertBefore(div2.firstChild, target.nextSibling);
             target.parentNode.insertBefore(divBreak2.firstChild, target.nextSibling);
             target.parentNode.insertBefore(div3.firstChild, target.nextSibling);
+            target.parentNode.insertBefore(divBreak3.firstChild, target.nextSibling);
+            target.parentNode.insertBefore(div4.firstChild, target.nextSibling);
             info.el.setAttribute('data-event-id',info.event.id);
           }
         });
@@ -224,6 +232,9 @@
           <div class="input">
             <label>Nazwa przedmiotu</label>
             <input type="text" id="title">
+
+            <label>Prowadzący</label>
+            <input type="text" id="tutor">
 
             <label>Opis przedmiotu</label>
             <input type="text" id="description">
@@ -282,7 +293,10 @@
             <input type="hidden" id="editEventId">
 
             <label>Nazwa przedmiotu</label>
-            <input type="text" id="editEventTitle"> 
+            <input type="text" id="editEventTitle">
+
+            <label>Prowadzący</label>
+            <input type="text" id="editEventTutor">
 
             <label>Opis przedmiotu</label>
             <input type="text" id="editEventDescription">

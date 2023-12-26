@@ -14,6 +14,9 @@ public class Event {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "tutor")
+    private String tutor;
+
     @Column(name = "daysOfWeek")
     private String daysOfWeek;
 
@@ -41,9 +44,10 @@ public class Event {
     @Column(name = "createdBy")
     private String createdBy;
 
-    public Event(Long id, String title, String daysOfWeek, String weekType, String field, String description, String startTime, String endTime, String color, int enabled, String createdBy) {
+    public Event(Long id, String title, String tutor, String daysOfWeek, String weekType, String field, String description, String startTime, String endTime, String color, int enabled, String createdBy) {
         this.id = id;
         this.title = title;
+        this.tutor = tutor;
         this.daysOfWeek = daysOfWeek;
         this.weekType = weekType;
         this.field = field;
@@ -73,6 +77,14 @@ public class Event {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getTutor() {
+        return tutor;
+    }
+
+    public void setTutor(String tutor) {
+        this.tutor = tutor;
     }
 
     public String getDaysOfWeek() {
@@ -152,6 +164,7 @@ public class Event {
         return "Event{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", tutor='" + tutor + '\'' +
                 ", daysOfWeek='" + daysOfWeek + '\'' +
                 ", weekType='" + weekType + '\'' +
                 ", field='" + field + '\'' +
