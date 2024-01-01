@@ -5,6 +5,8 @@ const modal = document.getElementById("modal");
 submitConsultation.addEventListener("click", () => {
     var addConsultationData = {
         title: document.getElementById("title").value,
+        tutorFirstName: firstName,
+        tutorLastName: lastName,
         daysOfWeek: document.querySelector('input[name="dayOfWeek"]:checked').value,
         weekType: "EW",
         field: document.getElementById("field").value,
@@ -13,7 +15,7 @@ submitConsultation.addEventListener("click", () => {
         endTime: document.getElementById("endTime").value,
         color: "#D3D3D3",
         enabled: 1,
-        createdBy: user
+        createdBy: username
     }
 
     $.ajax({

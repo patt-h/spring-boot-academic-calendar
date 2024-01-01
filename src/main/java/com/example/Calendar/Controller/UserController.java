@@ -4,11 +4,10 @@ import com.example.Calendar.DAO.UserRepository;
 import com.example.Calendar.Entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 public class UserController {
@@ -20,8 +19,11 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @RequestMapping(value = "/security/user", method = RequestMethod.GET)
-    public String currentUserName(Authentication authentication) {
-        return authentication.getName();
+    @RequestMapping(value = "/sorting/{username}", method = RequestMethod.GET)
+    public List<User> findByUsername(@PathVariable(value = "username") String username, Authentication authentication) {
+        if (Objects.equals(username, "self")) {
+            username = authentication.getName();
+        }
+        return userRepository.findTutorByUsername(username);
     }
 }

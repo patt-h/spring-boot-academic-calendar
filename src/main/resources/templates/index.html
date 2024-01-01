@@ -4,6 +4,7 @@
     <meta charset='utf-8' />
     <title>Kalendarz akademicki</title>
     <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
     <script
             src="https://code.jquery.com/jquery-3.7.1.js"
@@ -74,7 +75,35 @@
             url: '/events/' + localStorage.getItem("sort") + '/' + localStorage.getItem("week"),
             type: 'GET'
           },
-          
+          eventClick: function(info) {
+            modal.classList.add("open");
+
+            var startHours = new Date;
+            var endHours = new Date;
+
+            startHours.setTime(info.event.start);
+            endHours.setTime(info.event.end);
+
+            var startH = startHours.getHours();
+            startH = ("0" + startH).slice(-2);
+            var startM = startHours.getMinutes();
+            startM = ("0" + startM).slice(-2);
+
+            var endH = endHours.getHours();
+            endH = ("0" + endH).slice(-2);
+            var endM = endHours.getMinutes();
+            endM = ("0" + endM).slice(-2);
+
+            convertColorCode(info.event.backgroundColor);
+            convertDayNumber(startHours.getDay());
+            convertWeekType(info.event.extendedProps.weekType);
+
+            document.getElementById("eventHeader").innerHTML = info.event.title;
+            document.getElementById("dialog-info").innerHTML = classType;
+            document.getElementById("dialog-event").innerHTML = day + " - " + week + " " + startH + ":" + startM + " - " + endH + ":" + endM;
+            document.getElementById("dialog-person").innerHTML = info.event.extendedProps.tutorFirstName + " " + info.event.extendedProps.tutorLastName
+            document.getElementById("dialog-place").innerHTML = info.event.extendedProps.description;
+          },
           eventDidMount: function(info) {
             if (localStorage.getItem("consultationCheck") != "checked") {
               if (info.event.backgroundColor === "#D3D3D3") {
@@ -86,6 +115,7 @@
             if (target === undefined) {
                 return;
             }
+            convertColorCode(info.event.backgroundColor);
             var div1 = document.createElement('div1');
             var div2 = document.createElement('div2');
             var div3 = document.createElement('div3');
@@ -96,7 +126,7 @@
             div1.innerHTML = '' + (!!info.event.extendedProps.field?info.event.extendedProps.field:' ') + '';
             div2.innerHTML = '' + (!!info.event.extendedProps.weekType?info.event.extendedProps.weekType:' ') + '';
             div3.innerHTML = '' + (!!info.event.extendedProps.description?info.event.extendedProps.description:' ') + '';
-            div4.innerHTML = '' + (!!info.event.extendedProps.tutor?info.event.extendedProps.tutor:' ') + '';
+            div4.innerHTML = classType;
             divBreak1.innerHTML = "<br>";
             divBreak2.innerHTML = "<br>";
             divBreak3.innerHTML = "<br>";
@@ -147,6 +177,32 @@
     <input type="radio" name="chosenWeek" id="EW" value="EW"> Semestralny
     <input type="radio" name="chosenWeek" id="weekly" value="WEEKLY"> Tygodniowy
   </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-display">
+      <h2 id="eventHeader"></h2>
+      <p>
+        <div style="display:grid;grid-template-columns:min-content 1fr;gap:.5rem;align-items:center">
+
+        <div class="material-symbols-outlined" aria-label="informacje">info</div>
+        <slot id="dialog-info"></slot>
+
+        <div class="material-symbols-outlined" aria-label="termin">calendar_month</div>
+        <slot id="dialog-event"></slot>
+
+        <div class="material-symbols-outlined" aria-label="prowadzacy">person</div>
+        <slot id="dialog-person"></slot>
+
+        <div class="material-symbols-outlined" aria-label="miejsce">location_on</div>
+        <slot id="dialog-place"></slot>
+        </div>
+      </p>
+        <div class="modal-button">
+          <button id="closeEvent">Zamknij</button>
+        </div>
+    </div>
+  </div>
+    <script src="/js/displayEventInfo.js"></script>
     <script src="/js/sortEvent.js"></script>
 </body>
 </html>

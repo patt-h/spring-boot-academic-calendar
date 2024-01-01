@@ -3,49 +3,60 @@ package com.example.Calendar.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "employees")
+@Table(name = "names")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name = "login")
-    private String login;
+    @Column(name = "username")
+    private String username;
 
-    @Column(name = "password")
-    private String password;
+    @Column(name = "firstName")
+    private String firstName;
 
-    @Column(name = "role")
-    private String role;
-
-    public User(String login, String password, String role) {
-        super();
-        this.login = login;
-        this.password = password;
-        this.role = role;
-    }
+    @Column(name = "lastName")
+    private String lastName;
 
     public User() {
-        super();
+
     }
 
-    public String getLogin() {
-        return login;
+    public User(String username, String firstName, String lastName) {
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUsername() {
+        return username;
     }
 
-    public String getRole() {
-        return role;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
+                "username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 '}';
     }
 }

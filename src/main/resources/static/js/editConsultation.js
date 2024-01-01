@@ -6,6 +6,8 @@ const modal2 = document.getElementById("modal2");
 editButton.addEventListener("click", () => {
     var editConsultationData = {
         id: document.getElementById("editEventId").value,
+        tutorFirstName: firstName,
+        tutorLastName: lastName,
         title: document.getElementById("editEventTitle").value,
         daysOfWeek: document.querySelector('input[name="editEventDayOfWeek"]:checked').value,
         weekType: "EW",
@@ -15,7 +17,7 @@ editButton.addEventListener("click", () => {
         endTime: document.getElementById("editEventEndTime").value,
         color: "#D3D3D3",
         enabled: 1,
-        createdBy: user
+        createdBy: username
     }
 
     $.ajax({

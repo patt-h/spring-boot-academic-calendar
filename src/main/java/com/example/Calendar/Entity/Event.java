@@ -14,8 +14,11 @@ public class Event {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "tutor")
-    private String tutor;
+    @Column(name = "tutorFirstName")
+    private String tutorFirstName;
+
+    @Column(name = "tutorLastName")
+    private String tutorLastName;
 
     @Column(name = "daysOfWeek")
     private String daysOfWeek;
@@ -44,10 +47,11 @@ public class Event {
     @Column(name = "createdBy")
     private String createdBy;
 
-    public Event(Long id, String title, String tutor, String daysOfWeek, String weekType, String field, String description, String startTime, String endTime, String color, int enabled, String createdBy) {
+    public Event(Long id, String title, String tutorFirstName, String tutorLastName, String daysOfWeek, String weekType, String field, String description, String startTime, String endTime, String color, int enabled, String createdBy) {
         this.id = id;
         this.title = title;
-        this.tutor = tutor;
+        this.tutorFirstName = tutorFirstName;
+        this.tutorLastName = tutorLastName;
         this.daysOfWeek = daysOfWeek;
         this.weekType = weekType;
         this.field = field;
@@ -79,12 +83,20 @@ public class Event {
         this.title = title;
     }
 
-    public String getTutor() {
-        return tutor;
+    public String getTutorFirstName() {
+        return tutorFirstName;
     }
 
-    public void setTutor(String tutor) {
-        this.tutor = tutor;
+    public void setTutorFirstName(String tutorFirstName) {
+        this.tutorFirstName = tutorFirstName;
+    }
+
+    public String getTutorLastName() {
+        return tutorLastName;
+    }
+
+    public void setTutorLastName(String tutorLastName) {
+        this.tutorLastName = tutorLastName;
     }
 
     public String getDaysOfWeek() {
@@ -164,7 +176,8 @@ public class Event {
         return "Event{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", tutor='" + tutor + '\'' +
+                ", tutorFirstName='" + tutorFirstName + '\'' +
+                ", tutorLastName='" + tutorLastName + '\'' +
                 ", daysOfWeek='" + daysOfWeek + '\'' +
                 ", weekType='" + weekType + '\'' +
                 ", field='" + field + '\'' +

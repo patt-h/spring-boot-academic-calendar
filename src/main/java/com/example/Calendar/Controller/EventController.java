@@ -29,18 +29,30 @@ public class EventController {
         }
     }
 
+    @RequestMapping(value = "/events/{tutorFirstName}+{tutorLastName}", method = RequestMethod.GET)
+    public List<Event> findByTutor(@PathVariable(value = "tutorFirstName") String tutorFirstName, @PathVariable(value = "tutorLastName") String tutorLastName) {
+        return eventRepository.findByTutor(tutorFirstName, tutorLastName);
+    }
+
     @RequestMapping(value = "/events", method = RequestMethod.GET)
     public List<Event> events() {
         return eventRepository.findAll();
     }
 
-    @RequestMapping(value="/events", method=RequestMethod.POST)
+    @RequestMapping(value="/events", method = RequestMethod.POST)
     public Event saveEvent(@RequestBody Event event) {
         return eventRepository.save(event);
     }
 
-    @RequestMapping(value="/events", method=RequestMethod.DELETE)
+    @RequestMapping(value="/events", method = RequestMethod.DELETE)
     public void removeEvent(@RequestBody Event event) {
         eventRepository.delete(event);
     }
+
+//    @RequestMapping(value="/download/{field}", method = RequestMethod.GET)
+//    public List<Event> exportEvents(@PathVariable(value = "field") String field) {
+//
+//
+//        return eventRepository.findByField(field);
+//    }
 }

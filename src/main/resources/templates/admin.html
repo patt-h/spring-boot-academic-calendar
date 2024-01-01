@@ -100,7 +100,7 @@
             
             document.getElementById("editEventId").value = info.event.id;
             document.getElementById("editEventTitle").value = info.event.title;
-            document.getElementById("editEventTutor").value = info.event.extendedProps.tutor;
+            document.getElementById("editEventTutor").value = info.event.extendedProps.tutorFirstName + ' ' + info.event.extendedProps.tutorLastName;
             document.getElementById("editEventDescription").value = info.event.extendedProps.description;
             document.getElementById("editEventColor").value = info.event.backgroundColor;
             document.getElementById("editEventField").value = info.event.extendedProps.field;
@@ -131,7 +131,8 @@
             eventData = {
                 id: info.event.id,
                 title: info.event.title,
-                tutor: info.event.extendedProps.tutor,
+                tutorFirstName: info.event.extendedProps.tutorFirstName,
+                tutorLastName: info.event.extendedProps.tutorLastName,
                 daysOfWeek: startHours.getDay(),
                 weekType: info.event.extendedProps.weekType,
                 field: info.event.extendedProps.field,
@@ -172,7 +173,8 @@
             div1.innerHTML = '' + (!!info.event.extendedProps.field?info.event.extendedProps.field:' ') + '';
             div2.innerHTML = '' + (!!info.event.extendedProps.weekType?info.event.extendedProps.weekType:' ') + '';
             div3.innerHTML = '' + (!!info.event.extendedProps.description?info.event.extendedProps.description:' ') + '';
-            div4.innerHTML = '' + (!!info.event.extendedProps.tutor?info.event.extendedProps.tutor:' ') + '';
+            div4.innerHTML = '' + (!!info.event.extendedProps.tutorFirstName?info.event.extendedProps.tutorFirstName:' ') + ''
+            + ' ' + (!!info.event.extendedProps.tutorLastName?info.event.extendedProps.tutorLastName:' ') + '';
             divBreak1.innerHTML = "<br>";
             divBreak2.innerHTML = "<br>";
             divBreak3.innerHTML = "<br>";

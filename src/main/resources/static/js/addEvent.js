@@ -3,9 +3,13 @@ const closeButton = document.getElementById("closeEvent")
 const modal = document.getElementById("modal");
 
 submitButton.addEventListener("click", () => {
+    const tutor = document.getElementById("tutor").value;
+    let split = tutor.split(' ');
+
     var addEventData = {
         title: document.getElementById("title").value,
-        tutor: document.getElementById("tutor").value,
+        tutorFirstName: split[0],
+        tutorLastName: split[1],
         daysOfWeek: document.querySelector('input[name="dayOfWeek"]:checked').value,
         weekType: document.querySelector('input[name="weekType"]:checked').value,
         field: document.getElementById("field").value,
@@ -14,7 +18,7 @@ submitButton.addEventListener("click", () => {
         endTime: document.getElementById("endTime").value,
         color: document.getElementById("color").value,
         enabled: 1,
-        createdBy: user
+        createdBy: username
     }
 
     $.ajax({

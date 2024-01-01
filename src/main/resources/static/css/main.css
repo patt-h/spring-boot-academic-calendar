@@ -60,7 +60,7 @@ button:active {
 label {
 	line-height: 1.9rem;
 	display: inline-block;
-	width: 150px;
+	width: 140px;
 	text-align: right;
 }
 
@@ -95,12 +95,30 @@ label {
 	width: 400px;
 }
 
+.modal-display {
+	outline: black solid 1px;
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0);
+	padding: 15px 25px;
+	width: fit-content;
+}
+
+.modal-button {
+	text-align: center;
+}
+
 .modal-inner h2 {
 	margin: 0;
+	text-align: center;
+}
+
+.modal-display h2 {
+	margin: 0;
+	text-align: center;
 }
 
 .modal-inner p {
 	line-height: 24px;
 	margin: 10px 0;
 }
-
