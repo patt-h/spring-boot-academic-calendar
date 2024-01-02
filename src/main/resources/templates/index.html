@@ -103,6 +103,8 @@
             document.getElementById("dialog-event").innerHTML = day + " - " + week + " " + startH + ":" + startM + " - " + endH + ":" + endM;
             document.getElementById("dialog-person").innerHTML = info.event.extendedProps.tutorFirstName + " " + info.event.extendedProps.tutorLastName
             document.getElementById("dialog-place").innerHTML = info.event.extendedProps.description;
+
+            getTutorDetails(info.event.extendedProps.tutorFirstName, info.event.extendedProps.tutorLastName);
           },
           eventDidMount: function(info) {
             if (localStorage.getItem("consultationCheck") != "checked") {
@@ -192,7 +194,7 @@
 
         <div class="material-symbols-outlined" aria-label="prowadzacy">person</div>
         <slot id="dialog-person"></slot>
-
+        
         <div class="material-symbols-outlined" aria-label="miejsce">location_on</div>
         <slot id="dialog-place"></slot>
         </div>
@@ -200,6 +202,16 @@
         <div class="modal-button">
           <button id="closeEvent">Zamknij</button>
         </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal2">
+    <div class="modal-display">
+      <h2 id="sortTutorHeader"></h2>
+      <div class="container" id="container"></div>
+      <div class="modal-button">
+        <button id="closeTutorDisplay">Zamknij</button>
+      </div>
     </div>
   </div>
     <script src="/js/displayEventInfo.js"></script>

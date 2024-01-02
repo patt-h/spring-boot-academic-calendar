@@ -4,24 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dc2b35c6-77b2-4d8d-bcb9-d1999dbf4a9e" name="Changes" comment="Added possibility to disable viewing consultations and added new enabled and createdBy columns in database">
+    <list default="true" id="dc2b35c6-77b2-4d8d-bcb9-d1999dbf4a9e" name="Changes" comment="Changed tutor column to separate columns for first and last name, implemented handling these changes in frontend, added new pop-up window after click on event without being logged-in">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/create_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/create_db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/fill_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/fill_db.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Controller/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Controller/EventController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Calendar/DAO/EventRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/DAO/EventRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Calendar/DAO/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/DAO/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Entity/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Entity/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Calendar/Security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/addConsultation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/addConsultation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/addEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/addEvent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/editConsultation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/editConsultation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/displayEventInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/displayEventInfo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/editEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/editEvent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/getUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/getUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/sortEvent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/sortEvent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/user.html" afterDir="false" />
@@ -151,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700876440021</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Changed tutor column to separate columns for first and last name, implemented handling these changes in frontend, added new pop-up window after click on event without being logged-in">
+      <created>1704138111612</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1704138111612</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -181,6 +177,7 @@
     <MESSAGE value="Added Spring Security to handle POST and DELETE requests only for logged-in users" />
     <MESSAGE value="Added consultations for employees and improved sorting by week types with external API" />
     <MESSAGE value="Added possibility to disable viewing consultations and added new enabled and createdBy columns in database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added possibility to disable viewing consultations and added new enabled and createdBy columns in database" />
+    <MESSAGE value="Changed tutor column to separate columns for first and last name, implemented handling these changes in frontend, added new pop-up window after click on event without being logged-in" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed tutor column to separate columns for first and last name, implemented handling these changes in frontend, added new pop-up window after click on event without being logged-in" />
   </component>
 </project>

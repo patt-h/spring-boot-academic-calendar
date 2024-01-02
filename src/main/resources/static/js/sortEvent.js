@@ -107,3 +107,7 @@ if (localStorage.getItem("consultationCheck") == "checked") {
 else {
     document.querySelector('input[name="consultations"]').checked = false;
 }
+
+function convertHours(startHours, endHours) {
+    
+}

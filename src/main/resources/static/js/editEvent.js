@@ -4,10 +4,14 @@ const closeEditButton = document.getElementById("closeEditEvent")
 const modal2 = document.getElementById("modal2");
 
 editButton.addEventListener("click", () => {
+    const tutor = document.getElementById("editEventTutor").value;
+    let split = tutor.split(' ');
+
     var editEventData = {
         id: document.getElementById("editEventId").value,
         title: document.getElementById("editEventTitle").value,
-        tutor: document.getElementById("editEventTutor").value,
+        tutorFirstName: split[0],
+        tutorLastName: split[1],
         daysOfWeek: document.querySelector('input[name="editEventDayOfWeek"]:checked').value,
         weekType: document.querySelector('input[name="editEventWeekType"]:checked').value,
         field: document.getElementById("editEventField").value,
