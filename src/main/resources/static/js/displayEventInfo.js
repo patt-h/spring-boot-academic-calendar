@@ -41,7 +41,10 @@ person.addEventListener("click", () => {
             <div style="display:grid;grid-template-columns:min-content 1fr;gap:.5rem;align-items:center;outline: black solid 1px;margin: 8px">
               <div class="material-symbols-outlined" aria-label="informacje">info</div>
               <slot id="tutor-dialog-info">${result[i].title + " - " + classType}</slot>
-      
+              
+              <div class="material-symbols-outlined" aria-label="kierunek">group</div>
+              <slot id="tutor-dialog-field">${result[i].field}</slot>
+
               <div class="material-symbols-outlined" aria-label="termin">calendar_month</div>
               <slot id="tutor-dialog-event">${day + " - " + week + " " + result[i].startTime + " - " + result[i].endTime}</slot>
       

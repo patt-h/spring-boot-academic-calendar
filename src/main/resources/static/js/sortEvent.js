@@ -7,6 +7,10 @@ if (localStorage.getItem("sort") == null) {
 }
 
 if (localStorage.getItem("week") == null) {
+    localStorage.setItem("week", "EW");
+}
+
+if (localStorage.getItem("currentWeekType") == null) {
     currentDate = new Date();
     startDate = new Date(currentDate.getFullYear(), 0, 1);
     var days = Math.floor((currentDate - startDate) / (24 * 60 * 60 * 1000));
@@ -19,24 +23,30 @@ if (localStorage.getItem("week") == null) {
     }).done(function(result) {
         if (result[weekNumber].tydzien == "nieparzysty") {
             localStorage.setItem("currentWeekType", "TN");
-            console.log("nieparzysty");
+            console.log("Aktualny tydzien: nieparzysty");
         }
         else if (result[weekNumber].tydzien == "parzysty") {
             localStorage.setItem("currentWeekType", "TP");
-            console.log("parzysty");
+            console.log("Aktualny tydzien: parzysty");
         }
         else {
             localStorage.setItem("currentWeekType", "TN");
-            console.log("nietypowy lub blad")
+            console.log("Aktualny tydzien: nietypowy lub blad")
         }
-        localStorage.setItem("week", localStorage.getItem("currentWeekType"));
-        console.log("Sorting by: " + localStorage.getItem("week"));
     });
 }
 
 if (localStorage.getItem("consultationCheck") == null) {
     localStorage.setItem("consultationCheck", "checked");
 }
+
+function resetWeek() {
+    if (localStorage.getItem("week") != "EW") {
+        localStorage.setItem("week", localStorage.getItem("currentWeekType"));
+    }
+}
+
+window.onbeforeunload = resetWeek();
 
 function changeWeek() {
     if (localStorage.getItem("week") == "TN") {
@@ -106,8 +116,4 @@ if (localStorage.getItem("consultationCheck") == "checked") {
 }
 else {
     document.querySelector('input[name="consultations"]').checked = false;
-}
-
-function convertHours(startHours, endHours) {
-    
 }

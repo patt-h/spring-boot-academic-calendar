@@ -3,6 +3,7 @@
 <head>
     <meta charset='utf-8' />
     <title>Kalendarz akademicki</title>
+    <link rel="shortcut icon" href="#" />
     <link rel="stylesheet" href="/css/main.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
@@ -214,7 +215,15 @@
       </div>
     </div>
   </div>
+
+  <div class="export">
+    <button class="exportButton" title="Eksportuj ten kalendarz" id="exportButton">
+      <span class="material-symbols-outlined">ios_share</span>
+    </button>
+  </div>
+  
     <script src="/js/displayEventInfo.js"></script>
     <script src="/js/sortEvent.js"></script>
+    <script src="/js/downloadEvents.js"></script>
 </body>
 </html>
