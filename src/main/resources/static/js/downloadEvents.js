@@ -1,5 +1,9 @@
 const exportButton = document.getElementById("exportButton");
 
+if (document.getElementById("sorting").value == "W4") {
+    exportButton.style.display = "none"
+}
+
 exportButton.addEventListener("click", () => {
     $.ajax({
         type: "GET",
