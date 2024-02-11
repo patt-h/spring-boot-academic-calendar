@@ -10,7 +10,7 @@
 This project was made for Mobile Apps course and provides fully functional academic calendar.
 
 App is used to display classes schedule for every field of study at W4N faculty.
-- Guests can see schedule for their field and export it to iCalendar format. They can also click on events to display event's details, and there they can click on lecturer to see other lectures connected with him.
+- Guests can see schedule for their field and export it to iCalendar format. They can also click on events to display event details, and there they can click on lecturer to see other lectures connected with him.
 - Lecturers can add, edit and delete their consultations
 - Admin can add, edit and delete events
 
@@ -39,10 +39,10 @@ To run this project:
 2. Clone project from GitHub
 3. Create DATABASE `event` in MySQL and create tables using `create_db.sql` file from [SQL](sql/create_db.sql)
 4. Fill tables with sample user details using `fill_db.sql` file from [SQL](sql/fill_db.sql)
-5. Edit username and password to yours MySQL in [`appliaction.properties`](src/main/resources/application.properties)
+5. Edit username and password to yours MySQL in [`application.properties`](src/main/resources/application.properties)
 
 ## Adding new events
-If app has started successfully, it should is hosted at `localhost:8080`
+If app has started successfully, it should be available at `localhost:8080`
 
 <p align="center">
   <img src="https://i.imgur.com/UAFGSEW.png">
