@@ -54,7 +54,7 @@ Keep in mind that first and last name of lecturer has to be in database - you ca
 
 To delete or edit an event, just click directly on it. You can change every detail, then click `Edytuj` button, or click `Usuń` button to delete event from database. This app has drag-and-drop support, so if you want to change time when event occurs, just click on it and drag anywhere you want.
 
-Non-admin users (employees) can add, edit and delete theirs consultations. It works the same as adding events for admins.
+Non-admin users (employees) can add, edit and delete their consultations. It works the same as adding events for admins.
 
 Last but not least, you can export event schedule of every single field (e.g. TIN) in iCalendar format `.ics`. It means schedule can be used in apps such as Google Calendar or your system calendar if it supports iCalendar format. Just click share icon in the lower left corner.
 
