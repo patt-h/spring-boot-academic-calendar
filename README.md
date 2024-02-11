@@ -52,7 +52,7 @@ To add new events, login to admin account (or any other user with `ROLE_ADMIN` a
 Alternatively you can add new events directly in MySQL.
 Keep in mind that first and last name of lecturer has to be in database - you can't add event with employee that not exists in database.
 
-To delete or edit an event, just click directly on it. You can change every detail, then click `Edytuj` button, or click `Usuń` button to delete event from database. This app has drag-and-drop support, so if you want to change only time when event occurs, just click on it and drag anywhere you want.
+To delete or edit an event, just click directly on it. You can change every detail, then click `Edytuj` button, or click `Usuń` button to delete event from database. This app has drag-and-drop support, so if you want to change time when event occurs, just click on it and drag anywhere you want.
 
 Non-admin users (employees) can add, edit and delete theirs consultations. It works the same as adding events for admins.
 
